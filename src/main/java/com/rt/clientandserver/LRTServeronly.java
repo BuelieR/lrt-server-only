@@ -10,7 +10,7 @@ import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
+import static net.minecraft.registry.RegistryKeys.ITEM_GROUP;
 
 public class LRTServeronly implements ModInitializer {
 	public static final String MOD_ID = "lrt-server-only";
@@ -29,6 +29,6 @@ public class LRTServeronly implements ModInitializer {
 		// Proceed with mild caution.
 		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "todo_list"), TODO_LIST);
 
-		LOGGER.info("Hello Fabric world!");
+		LOGGER.info("Loaded mod that named LRT server only successfully...");
 	}
 }
