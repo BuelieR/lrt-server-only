@@ -1,5 +1,5 @@
 {
   "item.lrt-server-only.todo_list": "申请批阅表",
   "item.lrt-server-only.todo_list.tooltip": "你可以通过该物件查看待批阅的申请",
-  "itemGroup.lrt-server-only.todo_list": "我的物品"
+  "itemGroup.lrt-server-only.LRT": "LRT服务器物品"
 }
