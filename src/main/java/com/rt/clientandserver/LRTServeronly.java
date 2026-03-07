@@ -2,6 +2,9 @@ package com.rt.clientandserver;
 
 import net.fabricmc.api.ModInitializer;
 
+import static net.minecraft.server.command.CommandManager.*;
+
+import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.Item;
@@ -18,6 +21,10 @@ import org.slf4j.LoggerFactory;
 import static net.minecraft.registry.RegistryKeys.ITEM_GROUP;
 
 public class LRTServeronly implements ModInitializer {
+	public static final String Context_of_the_help_of_the_command_of_server =
+			"LRT服务器命令指南 | The help of LRT server's commands\n" +
+					"/we(或/worldedit): 创世神模组的帮助命令\n" +
+					"/wrap: 主城传送命令";
 	public static final String MOD_ID = "lrt-server-only";
 
 	// This logger is used to write text to the console and the log file.
@@ -46,6 +53,12 @@ public class LRTServeronly implements ModInitializer {
 		// This code runs as soon as Minecraft is in a mod-load-ready state.
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
+		CommandRegistrationCallback.EVENT.register(((commandDispatcher, commandRegistryAccess, registrationEnvironment) -> commandDispatcher.register(
+				literal("shp").executes(commandContext -> {
+					commandContext.getSource().sendFeedback(() -> Text.literal(Context_of_the_help_of_the_command_of_server),false);
+                    return 1;
+                })
+		)));
 		Registry.register(Registries.ITEM, new Identifier(MOD_ID, "todo_list"), TODO_LIST);
 		//Registry.register(Registries.ITEM_GROUP, new Identifier(MOD_ID, "lrt_group"), LRT_ITEM_GROUP);
 		LOGGER.info("Loaded mod that named LRT server only successfully...");
